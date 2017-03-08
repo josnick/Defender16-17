@@ -1,18 +1,20 @@
 package com.Defenders.Entidades;
 
 import com.Defenders.Entidades.Armas.Arma;
+import com.Defenders.Entidades.Entidad.TipoEntidad;
 
-public class EntidadDinamica extends Entidad{
+public abstract class EntidadDinamica extends Entidad{
 	
 	
-	public enum Direccion{NONE,UP,DW,RG,LF,UPRG,UPLF,DWRG,DWLF};
-	public enum TipoEntidad{NONE,ALIADO,ENEMIGO};
-	protected TipoEntidad tipoEntidad;
-	protected Direccion direccionEntidad;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8711557094846423221L;
+	
 	protected float rx,ry,rz;
 	private Direccion mydireccion;
-	protected float MAX_VELOCITY=0.7f;
-	protected float velocidadActual=0.0f;
+	protected float MAX_VELOCITY=3.0f; //pixeles por frame
+	protected float velocidadActual=MAX_VELOCITY;
 	
 	
 	//arma de la entidad en caso de que posea
@@ -21,6 +23,11 @@ public class EntidadDinamica extends Entidad{
 	
 	public EntidadDinamica(float x, float y) {
 		super(x, y);
+		// TODO Auto-generated constructor stub
+	}
+	
+	public EntidadDinamica(float x, float y,float sx,float sy) {
+		super(x, y,sx,sy);
 		// TODO Auto-generated constructor stub
 	}
 	
