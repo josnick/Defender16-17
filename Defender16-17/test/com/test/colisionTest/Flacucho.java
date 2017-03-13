@@ -1,9 +1,9 @@
 package com.test.colisionTest;
 
-import java.awt.Graphics;
-
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.util.Random;
+
 import javax.swing.ImageIcon;
 import com.Defenders.AssetsManager;
 import com.Defenders.Entidades.EntidadDinamica;
@@ -12,6 +12,7 @@ import com.Defenders.Entidades.Armas.BolaFuego;
 public class Flacucho extends EntidadDinamica {
 
 	private Image image;
+	private final Random r=new Random();
 	private static final long serialVersionUID = 3076302560818437078L;
 
 	public Flacucho(float x, float y) {
@@ -35,9 +36,8 @@ public class Flacucho extends EntidadDinamica {
 	}
 
 	@Override
-	public void dibujar(Graphics g) {
+	public void dibujar(Graphics2D g2d) {
 		// TODO Auto-generated method stub
-		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(this.image, (int) getXPos(), (int) getYPos(), this);
 	}
 
@@ -46,7 +46,7 @@ public class Flacucho extends EntidadDinamica {
 		// TODO Auto-generated method stub
 		// si la entidad se escapa de la pantalla cambiamos la direccion
 		if (x >= FullScreen.SCREEN_WIDHT) {
-			switch (FullScreen.r.nextInt(2)) {
+			switch (r.nextInt(2)) {
 			case 0:
 				direccionEntidad = Direccion.LF;
 				break;
@@ -60,7 +60,7 @@ public class Flacucho extends EntidadDinamica {
 			}
 		}
 		if (x <= 0) {
-			switch (FullScreen.r.nextInt(2)) {
+			switch (r.nextInt(2)) {
 			case 0:
 				direccionEntidad = Direccion.RG;
 				break;
@@ -89,7 +89,7 @@ public class Flacucho extends EntidadDinamica {
 
 		}
 		if (y <= 0) {
-			switch (FullScreen.r.nextInt(2)) {
+			switch (r.nextInt(2)) {
 			case 0:
 				direccionEntidad = Direccion.UP;
 				break;
@@ -137,8 +137,8 @@ public class Flacucho extends EntidadDinamica {
 			break;
 
 		}
-		if (FullScreen.r.nextFloat() > 0.99f)
-			FullScreen.c.addEntidad(new BolaFuego(this));
+//		if (r.nextFloat() > 0.99f)
+//			//FullScreen.c.addEntidad(new BolaFuego(this));
 	}
 
 }

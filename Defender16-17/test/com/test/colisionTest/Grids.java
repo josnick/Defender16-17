@@ -154,7 +154,7 @@ public class Grids extends JComponent {
 		paintBackground(g2);
 
 		for (int i = 0; i < entidades.size(); i++) {
-			entidades.get(i).dibujar(g);
+			entidades.get(i).dibujar(g2);
 		}
 	}
 

@@ -1,17 +1,16 @@
 package com.Defenders;
 
 import java.awt.EventQueue;
+
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import com.Defenders.Menu.GestorPantalla;
 import com.Defenders.Menu.PantallaEnum;
 
-public class Main extends JFrame implements KeyListener{
+public class Main extends JFrame{
 	
 	private static final long serialVersionUID = -8961797987530734026L;
 	public static final int SCREEN_WIDHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
@@ -31,15 +30,12 @@ public class Main extends JFrame implements KeyListener{
 	}
 	
 	public Main() {
-		setSize(SCREEN_WIDHT, SCREEN_HEIGHT);
 		/**
 		 * Añadir entidades aleatorias
 		 */
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE | WindowConstants.DISPOSE_ON_CLOSE);
 		setUndecorated(true);
 		device.setFullScreenWindow(this);
-
-		addKeyListener(this);
 		setFocusable(true);
 		
 		/*
@@ -51,26 +47,6 @@ public class Main extends JFrame implements KeyListener{
 		validate();
 		repaint();
 		setVisible(true);
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
-			dispose();
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

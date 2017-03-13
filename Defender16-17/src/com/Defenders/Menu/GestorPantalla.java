@@ -1,8 +1,6 @@
 package com.Defenders.Menu;
 
 import java.awt.BorderLayout;
-
-import java.awt.Component;
 import javax.swing.JFrame;
 
 /**
@@ -14,6 +12,7 @@ public class GestorPantalla {
 
 	private static GestorPantalla instance;
 	private JFrame game;
+	private PantallaEnum pantallaActual;
 
 	// Singleton: private constructor
 	private GestorPantalla() {
@@ -41,20 +40,19 @@ public class GestorPantalla {
 	 * Muestra la pantalla seleccionada
 	 */
 	public void mostrarPantalla(PantallaEnum screenEnum, Object... params) {
-
-		// obtiene los componentes de la pantalla
-		Component[] pantallaActual = game.getContentPane().getComponents();
-
+		if(screenEnum!=null && screenEnum==pantallaActual) return;
+		pantallaActual=screenEnum;
+		// Elimina los elementos de la pantalla anterior
+		this.game.getContentPane().removeAll();
 		// carga la nueva pantalla
 		PantallaAbstracta newScreen = screenEnum.obtenerPantalla(params);
 		newScreen.construirEscena();
-		game.add(newScreen, BorderLayout.CENTER);
+		this.game.add(newScreen, BorderLayout.CENTER);
+		this.game.addKeyListener(newScreen);
+		this.game.validate();
+		this.game.repaint();
+		
 
-		// Elimina los elementos de la pantalla anterior
-		if (pantallaActual != null) {
-			for (Component c : pantallaActual)
-				game.getContentPane().remove(c);
-		}
 
 	}
 

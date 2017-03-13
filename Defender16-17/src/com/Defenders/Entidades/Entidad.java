@@ -1,11 +1,11 @@
 package com.Defenders.Entidades;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import javax.swing.JComponent;
 
-import com.Defenders.Entidades.Entidad.Direccion;
+import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JComponent;
 
 public abstract class Entidad extends JComponent {
 
@@ -15,6 +15,7 @@ public abstract class Entidad extends JComponent {
 	private static final long serialVersionUID = -7311007324247891976L;
 	protected float x, y, z;
 	protected float sx, sy, sz;
+	protected List<Entidad> componentes;
 
 	public enum Direccion {
 		NONE, UP, DW, RG, LF, UPRG, UPLF, DWRG, DWLF
@@ -65,7 +66,9 @@ public abstract class Entidad extends JComponent {
 		this.sx = sx;
 		this.sy = sy;
 		this.sz = sz;
+		this.componentes=new ArrayList<>();
 	}
+	
 
 	public float getXPos() {
 		return this.x;
@@ -90,6 +93,14 @@ public abstract class Entidad extends JComponent {
 	public float getZSize() {
 		return this.sz;
 	}
+	
+	
+	public void setXPos(float x) {
+		this.x = x;
+	}
+	public void setYPos(float y) {
+		this.y = y;
+	}
 
 	public TipoEntidad getTipoEntidad() {
 		return this.tipoEntidad;
@@ -106,6 +117,10 @@ public abstract class Entidad extends JComponent {
 	public void setTipoEntidad(TipoEntidad tipoEntidad) {
 		this.tipoEntidad = tipoEntidad;
 	}
+	
+	public List<Entidad> getComponentes() {
+		return this.componentes;
+	}
 
 	/**
 	 * Metodo que devuelve true si la entidad actual esta colisionando con otra
@@ -115,19 +130,11 @@ public abstract class Entidad extends JComponent {
 		return x < e.x + e.sx && x + sx > e.x && y < e.y + e.sy && y + sy > e.y;
 	}
 
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-
-		dibujar(g);
-
-		Toolkit.getDefaultToolkit().sync();
-	}
-
 	// actualiza la posicion de una entidad
 	public abstract void actualizar();
-
 	// dibuja una entidad
-	public abstract void dibujar(Graphics g);
+	public abstract void dibujar(Graphics2D g);
+	//actualizar posicion entidad
+	public abstract void actualizarPosicion(Direccion d);
 
 }

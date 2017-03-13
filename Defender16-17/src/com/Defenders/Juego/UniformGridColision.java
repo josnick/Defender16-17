@@ -2,6 +2,7 @@ package com.Defenders.Juego;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.Defenders.Entidades.Entidad;
@@ -26,7 +27,7 @@ public class UniformGridColision {
 	}
 
 	@SuppressWarnings("unchecked")
-	public UniformGridColision(float ancho, float alto, float tamañoCeldas, ArrayList<Entidad> entidades) {
+	public UniformGridColision(float ancho, float alto, float tamañoCeldas, List<Entidad> entidades) {
 		// TODO Auto-generated constructor stub
 		this.cellSize = tamañoCeldas;
 		this.filas = (int) ((ancho + cellSize - 1) / cellSize);

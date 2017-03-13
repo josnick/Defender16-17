@@ -1,6 +1,5 @@
 package com.Defenders.Entidades.Armas;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
@@ -80,9 +79,8 @@ public class BolaFuego extends EntidadDinamica {
 	}
 
 	@Override
-	public void dibujar(Graphics g) {
+	public void dibujar(Graphics2D g2d) {
 		// TODO Auto-generated method stub
-		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(this.image, (int) x, (int) y, this);
 
 	}

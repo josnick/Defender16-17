@@ -1,6 +1,6 @@
 package com.Defenders.Entidades.Dinamicas;
 
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import com.Defenders.Entidades.EntidadDinamica;
 
@@ -30,7 +30,7 @@ public class Ciudadano extends EntidadDinamica {
 	}
 
 	@Override
-	public void dibujar(Graphics g) {
+	public void dibujar(Graphics2D g2d) {
 		// TODO Auto-generated method stub
 		
 	}
