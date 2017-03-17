@@ -1,6 +1,8 @@
 package com.Defenders.Entidades.Estaticas;
 
 import java.awt.Graphics2D;
+
+import com.Defenders.Entidades.Entidad;
 import com.Defenders.Entidades.EntidadEstatica;
 
 /**
@@ -35,6 +37,24 @@ public class Vida extends EntidadEstatica{
 
 	@Override
 	public void actualizarPosicion(Direccion d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void disparar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void destruirEntidad(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void iniciarEntidad() {
 		// TODO Auto-generated method stub
 		
 	}

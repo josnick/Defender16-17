@@ -2,9 +2,9 @@ package com.Defenders.Entidades;
 
 
 import java.awt.Graphics2D;
+
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JComponent;
 
 public abstract class Entidad extends JComponent {
@@ -28,10 +28,15 @@ public abstract class Entidad extends JComponent {
 	public enum Faccion {
 		NONE, ALIADO, ENEMIGO
 	};
+	
+	public enum IdentificadorEntidad{
+		JUGADOR,ALIEN,MUTANTE,CIUDADANO,BALA
+	}
 
 	protected Direccion direccionEntidad;
 	protected Faccion faccionEntidad;
 	protected TipoEntidad tipoEntidad;
+	protected IdentificadorEntidad identificadorEntidad;
 
 	/**
 	 * Constructor que inicializa una entidad en un espacion 2d
@@ -69,6 +74,16 @@ public abstract class Entidad extends JComponent {
 		this.componentes=new ArrayList<>();
 	}
 	
+	
+	public Direccion getDireccion(){
+		return direccionEntidad;
+	}
+	public void setDireccion(Direccion dir){
+		this.direccionEntidad=dir;
+	}
+	public void setIdentificadorEntidad(IdentificadorEntidad identificadorEntidad) {
+		this.identificadorEntidad = identificadorEntidad;
+	}
 
 	public float getXPos() {
 		return this.x;
@@ -113,6 +128,10 @@ public abstract class Entidad extends JComponent {
 	public Direccion getDireccionEntidad() {
 		return this.direccionEntidad;
 	}
+	
+	public IdentificadorEntidad getIdentificadorEntidad() {
+		return this.identificadorEntidad;
+	}
 
 	public void setTipoEntidad(TipoEntidad tipoEntidad) {
 		this.tipoEntidad = tipoEntidad;
@@ -121,6 +140,15 @@ public abstract class Entidad extends JComponent {
 	public List<Entidad> getComponentes() {
 		return this.componentes;
 	}
+	
+	public boolean insertarComponente(Entidad e) {
+		return this.componentes.add(e);
+	}
+	
+	public boolean borrarComponente(Entidad e) {
+		return this.componentes.remove(e);
+	}
+	
 
 	/**
 	 * Metodo que devuelve true si la entidad actual esta colisionando con otra
@@ -136,5 +164,17 @@ public abstract class Entidad extends JComponent {
 	public abstract void dibujar(Graphics2D g);
 	//actualizar posicion entidad
 	public abstract void actualizarPosicion(Direccion d);
+	//disparar
+	public abstract void disparar();
+	//eliminar entidad causada por otra entidad
+	public abstract void destruirEntidad(Entidad e);
+	//inicializar entidad
+	public abstract void iniciarEntidad();
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return tipoEntidad+"--"+faccionEntidad+"---"+direccionEntidad;
+	}
 
 }

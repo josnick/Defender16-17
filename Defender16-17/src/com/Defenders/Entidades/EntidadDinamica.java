@@ -1,8 +1,6 @@
 package com.Defenders.Entidades;
 
 import com.Defenders.Entidades.Armas.Arma;
-import com.Defenders.Entidades.Entidad.Direccion;
-import com.test.colisionTest.FullScreen;
 
 public abstract class EntidadDinamica extends Entidad{
 	
@@ -17,10 +15,11 @@ public abstract class EntidadDinamica extends Entidad{
 	
 	
 	protected float rx,ry,rz;
-	private Direccion mydireccion;
 	protected float velocidadActual=INI_VELOCIDAD;
 	
 	protected float aceleracion=1.0f; //pixeles por frame
+	protected int framesActualizar=0; //numero de frames que tiene que pasar para actualizar la entidad
+	protected int framesAtuales=0; //numero de frames actuales para actualizar la entidad
 	
 	
 	//arma de la entidad en caso de que posea
@@ -43,12 +42,7 @@ public abstract class EntidadDinamica extends Entidad{
 	}
 	
 	
-	public Direccion getDireccion(){
-		return this.mydireccion;
-	}
-	public void setDireccion(Direccion dir){
-		this.mydireccion=dir;
-	}
+	
 	
 	
 	@Override
@@ -67,12 +61,12 @@ public abstract class EntidadDinamica extends Entidad{
 			y += velocidadActual;
 			break;
 		case DWLF:
-			y -= velocidadActual;
-			x -= velocidadActual;
+			y -= velocidadActual/2;
+			x -= velocidadActual/2;
 			break;
 		case DWRG:
-			y -= velocidadActual;
-			x += velocidadActual;
+			y -= velocidadActual/2;
+			x += velocidadActual/2;
 			break;
 		case LF:
 			x -= velocidadActual;
@@ -86,12 +80,12 @@ public abstract class EntidadDinamica extends Entidad{
 			y -= velocidadActual;
 			break;
 		case UPLF:
-			y += velocidadActual;
-			x -= velocidadActual;
+			y += velocidadActual/2;
+			x -= velocidadActual/2;
 			break;
 		case UPRG:
-			y += velocidadActual;
-			x += velocidadActual;
+			y += velocidadActual/2;
+			x += velocidadActual/2;
 			break;
 		default:
 			break;

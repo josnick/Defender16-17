@@ -1,14 +1,14 @@
 package com.Defenders.Entidades.Armas;
 
 import java.awt.Graphics2D;
+
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
-
 import com.Defenders.AssetsManager;
 import com.Defenders.Entidades.Entidad;
 import com.Defenders.Entidades.EntidadDinamica;
-import com.test.colisionTest.FullScreen;
+import com.test.GameEngineTest.Game;
+import com.test.GameEngineTest.Pantallas.ScreenManager;
 
 public class BolaFuego extends EntidadDinamica {
 
@@ -23,7 +23,8 @@ public class BolaFuego extends EntidadDinamica {
 		faccionEntidad = e.getFaccionEntidad();
 		tipoEntidad = TipoEntidad.ARMA;
 		direccionEntidad = e.getDireccionEntidad();
-		velocidadActual = 5f;
+		velocidadActual = 15f;
+		aceleracion=0f;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -31,51 +32,20 @@ public class BolaFuego extends EntidadDinamica {
 		super(x + ((float) img.getIconWidth() / 2), y + ((float) img.getIconHeight() / 2), (float) img.getIconWidth(),
 				(float) img.getIconHeight());
 		this.image = img.getImage();
+		this.sx=img.getIconWidth();
+		this.sy=img.getIconHeight();
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void actualizar() {
-		if (x >= FullScreen.SCREEN_WIDHT || x <= 0 || y >= FullScreen.SCREEN_HEIGHT || y <= 0) {
-			FullScreen.c.removeEntidad(this);
-			return;
+		if (x >= Game.SCREEN_WIDHT || x <= 0 || y >= Game.SCREEN_HEIGHT || y <= 0) {
+			ScreenManager.getInstance().getPantallaActual().borrarEntidad(this);
 		}
-		// TODO Auto-generated method stub
-		switch (direccionEntidad) {
-		case DW:
-			y -= velocidadActual;
-			break;
-		case DWLF:
-			y -= velocidadActual;
-			x -= velocidadActual;
-			break;
-		case DWRG:
-			y -= velocidadActual;
-			x += velocidadActual;
-			break;
-		case LF:
-			x -= velocidadActual;
-			break;
-		case NONE:
-			break;
-		case RG:
-			x += velocidadActual;
-			break;
-		case UP:
-			y += velocidadActual;
-			break;
-		case UPLF:
-			y += velocidadActual;
-			x -= velocidadActual;
-			break;
-		case UPRG:
-			y += velocidadActual;
-			x += velocidadActual;
-			break;
-		default:
-			break;
-
+		else{
+			actualizarPosicion(direccionEntidad);
 		}
+		
 	}
 
 	@Override
@@ -83,6 +53,24 @@ public class BolaFuego extends EntidadDinamica {
 		// TODO Auto-generated method stub
 		g2d.drawImage(this.image, (int) x, (int) y, this);
 
+	}
+
+	@Override
+	public void disparar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void destruirEntidad(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void iniciarEntidad() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

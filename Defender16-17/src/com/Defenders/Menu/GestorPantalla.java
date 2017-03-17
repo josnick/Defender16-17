@@ -1,6 +1,6 @@
 package com.Defenders.Menu;
 
-import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 
 /**
@@ -12,7 +12,7 @@ public class GestorPantalla {
 
 	private static GestorPantalla instance;
 	private JFrame game;
-	private PantallaEnum pantallaActual;
+	//private PantallaAbstracta pantallaActual;
 
 	// Singleton: private constructor
 	private GestorPantalla() {
@@ -35,25 +35,29 @@ public class GestorPantalla {
 		}
 		return instance;
 	}
+	
+	public JFrame getGame() {
+		return game;
+	}
 
 	/**
 	 * Muestra la pantalla seleccionada
 	 */
-	public void mostrarPantalla(PantallaEnum screenEnum, Object... params) {
-		if(screenEnum!=null && screenEnum==pantallaActual) return;
-		pantallaActual=screenEnum;
-		// Elimina los elementos de la pantalla anterior
-		this.game.getContentPane().removeAll();
-		// carga la nueva pantalla
-		PantallaAbstracta newScreen = screenEnum.obtenerPantalla(params);
-		newScreen.construirEscena();
-		this.game.add(newScreen, BorderLayout.CENTER);
-		this.game.addKeyListener(newScreen);
-		this.game.validate();
-		this.game.repaint();
-		
-
-
-	}
+//	public void mostrarPantalla(ScreenEnum screenEnum, Object... params) {
+//		if(screenEnum!=null && screenEnum==pantallaActual) return;
+//		pantallaActual=screenEnum;
+//		// Elimina los elementos de la pantalla anterior
+//		this.game.getContentPane().removeAll();
+//		// carga la nueva pantalla
+//		PantallaAbstracta newScreen = screenEnum.obtenerPantalla(params);
+//		newScreen.construirEscena();
+//		this.game.add(newScreen, BorderLayout.CENTER);
+//		this.game.addKeyListener(newScreen);
+//		this.game.validate();
+//		this.game.repaint();
+//		
+//
+//
+//	}
 
 }

@@ -1,29 +1,18 @@
 package com.Defenders.Menu.Pantallas;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
-import java.awt.Shape;
 import java.awt.event.KeyEvent;
-import java.awt.geom.Line2D;
-import java.util.List;
-
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import javax.swing.border.LineBorder;
-
 import com.Defenders.Main;
-import com.Defenders.Entidades.Entidad;
-import com.Defenders.Juego.FactoriaEntidades;
-import com.Defenders.Juego.MotorJuego;
 import com.Defenders.Juego.PanelJuego;
 import com.Defenders.Menu.PantallaAbstracta;
-import com.test.colisionTest.Gordaco;
 
 public class PantallaJuego extends PantallaAbstracta {
 
@@ -33,7 +22,6 @@ public class PantallaJuego extends PantallaAbstracta {
 	private JPanel panelSuperior;
 	private PanelJuego panelJuego;
 	private JPanel panelInfo, minimapPanel, panelAux;
-	private Entidad gordaco;
 	// private List<Entidad> entidades;
 	// private final int GRIDSIZE = 124;
 	//
@@ -73,16 +61,6 @@ public class PantallaJuego extends PantallaAbstracta {
 	}
 
 	private void pintarFondo(Graphics2D g2) {
-		// g2.setPaint(Color.LIGHT_GRAY);
-		// for (int i = 0; i < getSize().width; i += GRIDSIZE) {
-		// Shape line = new Line2D.Float(i, 0, i, getSize().height);
-		// g2.draw(line);
-		// }
-		//
-		// for (int i = 0; i < getSize().height; i += GRIDSIZE) {
-		// Shape line = new Line2D.Float(0, i, getSize().width, i);
-		// g2.draw(line);
-		// }
 		g2.setColor(getBackground());
 		g2.fillRect(0, 0, Main.SCREEN_WIDHT, Main.SCREEN_HEIGHT);
 

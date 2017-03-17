@@ -1,12 +1,10 @@
 package com.Defenders.Menu.Pantallas;
 
 import java.awt.Color;
+
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
-
 import javax.swing.JButton;
-import javax.swing.JLabel;
-
 import com.Defenders.Main;
 import com.Defenders.Menu.PantallaAbstracta;
 import com.Defenders.Menu.Pantallas.utils.StyledButtonUI;
